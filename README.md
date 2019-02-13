@@ -40,4 +40,5 @@ models/base_model.py |
  | 
 
 ## Author
+ Angie Delgado
  Shoji Takashima
