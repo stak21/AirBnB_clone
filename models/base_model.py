@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """ Class: Base Model """
+""" Class: Base Model """
 from datetime import datetime
 from datetime import timedelta
+from models import storage
 import uuid
 
 
@@ -15,8 +17,6 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-
-
 
     def __str__(self):
         """ create a string that prints class name, id, dict """
@@ -35,8 +35,3 @@ class BaseModel():
                 "updated_at": self.updated_at.isoformat(),
                 "created_at": self.created_at.isoformat()
                 }
-
-dic = {"dog": 5, "cat": 3}
-name = BaseModel(**{"id": 5, "created_at": 3, "updated_at": 7})
-
-print(name)
