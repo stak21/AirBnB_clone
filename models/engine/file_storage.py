@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import models
 import json
 
 class FileStorage():
@@ -16,13 +15,22 @@ class FileStorage():
         """***sets in __objects the obj with key <obj class name>.id
         adds the new dictionary to __objects"""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = to_dict(obj)
+        self.__objects[key] = obj.to_dict()
 
     def save(self):
         """serializes __objects to the JSON file (__file_path)"""
-        with open(__file_path, 'w') as f:
-            dump(self.__objects, f)
+        with open(self.__file_path, 'w') as f:
+            json.dump(self.__objects, f)
 
     def reload(self):
-        """deserializes the JSON file to __objects"""
-        if __file_path:
+        try:
+            with open(self.__file_path, 'r') as f:
+                self.__objects = json.load(f)
+        except:
+            with open(self.__file_path, "w") as f:
+                self.save()
+
+    @classmethod
+    def _refresh(cls):
+        """ Testing purposes only """
+        cls.__objects = {}

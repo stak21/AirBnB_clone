@@ -35,8 +35,3 @@ class BaseModel():
                 "updated_at": self.updated_at.isoformat(),
                 "created_at": self.created_at.isoformat()
                 }
-
-dic = {"dog": 5, "cat": 3}
-name = BaseModel(**{"id": 5, "created_at": 3, "updated_at": 7})
-
-print(name)
