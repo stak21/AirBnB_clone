@@ -3,7 +3,7 @@
 """ Class: Base Model """
 from datetime import datetime
 from datetime import timedelta
-from models import storage
+from models.__init__ import storage
 import uuid
 
 
@@ -17,7 +17,7 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new()
+            storage.new(self)
 
     def __str__(self):
         """ create a string that prints class name, id, dict """

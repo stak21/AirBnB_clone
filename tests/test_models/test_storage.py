@@ -14,7 +14,7 @@ from pathlib import Path
 class TestStorage(unittest.TestCase):
     """ Tests the file storage """
     def setUp(self):
-        """ 
+        """
             Sets up an instance of storage and refreshes the __object to {}
             reload in our case will create a file with an empty dictionary
         """
@@ -24,7 +24,10 @@ class TestStorage(unittest.TestCase):
 
     def tearDown(self):
         """ Removes the file after every test """
-        os.remove("./file.json")
+        try:
+            os.remove("./file.json")
+        except:
+            pass
 
     """ Save: Saves the dictionary stored in __object to a file """
     def test_save_empty(self):
@@ -51,7 +54,7 @@ class TestStorage(unittest.TestCase):
         self.assertEqual(len(self.storage.all()), 1)
 
     def test_new_if_classes_of_basemodel(self):
-        """ Tests new by providing a bad object """ 
+        """ Tests new by providing a bad object """
         with self.assertRaises(TypeError):
             self.storage.new([])
 
