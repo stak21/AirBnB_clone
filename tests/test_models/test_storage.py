@@ -32,8 +32,9 @@ class TestStorage(unittest.TestCase):
 
     def test_reload(self):
         self.test_dictionary = {"BaseModel.121212": {"id": 121212}}
-        self.test_dictionary2 = {"BaseModel.221212": {"id": 121212}}
+#self.test_dictionary2 = {"BaseModel.221212": {"id": 121212}}
         with open("file.json", 'w+') as f:
-            json.dump([self.test_dictionary, self.test_dictionary2], f)
+            json.dump(self.test_dictionary, f)
+#json.dump([self.test_dictionary, self.test_dictionary2], f)
         self.storage.reload()
         self.assertEqual(len(self.storage.all()), 2)
