@@ -22,17 +22,21 @@ class FileStorage():
     def save(self):
         """serializes __objects to the JSON file (__file_path)"""
         with open(self.__file_path, 'w', encoding="utf-8") as f:
+            for key, value in self.__objects.items():
+                self.__objects[key] = value.to_dict()
             json.dump(self.__objects, f)
 
     def reload(self):
         """if file exists, public instance method deserializes the JSON file
         to __objects"""
         try:
-            with open(self.__file_path, encoding="utf-8") as f:
-                json.loads(f)
-        except:
-             FileNotFoundError
-        pass
+            with open(self.__file_path) as f:
+                instdict = json.load(f)
+            for key, value in instdict.items():
+                key = key.split(".")
+                eval('{}(**value)'.format(key[0]))
+        except FileNotFoundError:
+             pass
 
     @classmethod
     def _refresh(cls):
