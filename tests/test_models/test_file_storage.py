@@ -23,15 +23,16 @@ class TestStorage(unittest.TestCase):
         self.storage.reload()
 
     def tearDown(self):
-        """ Removes the file after every test """
+        """ Removes file """
         try:
-            os.remove("./file.json")
+            os.remove("file.json")
         except:
             pass
 
     """ Save: Saves the dictionary stored in __object to a file """
     def test_save_empty(self):
         """ Tests if save wrote to the file an empty dictionary """
+
         self.storage.save()
         with open("file.json", 'r', encoding="utf-8") as f:
             self.r = f.read()
@@ -43,21 +44,14 @@ class TestStorage(unittest.TestCase):
         self.storage.new(base)
         self.storage.save()
         with open("file.json", 'r', encoding="utf-8") as f:
-            self.r = f.read()
-            self.assertEqual(len(self.r), 212)
+            self.r = json.load(f)
+            self.assertEqual(self.r, self.storage.all())
 
     """ new: stores inside of __object a dictionary rep of the given object """
     def test_new(self):
         """ tests if storage was incremented by one object """
         self.base = BaseModel()
         self.storage.new(self.base)
-        self.assertEqual(len(self.storage.all()), 1)
-
-    def test_new_if_classes_of_basemodel(self):
-        """ Tests new by providing a bad object """
-        with self.assertRaises(TypeError):
-            self.storage.new([])
-
 
     """ reload: returns a dictionary stored inside of a file """
     def test_reload(self):
