@@ -3,7 +3,7 @@
 """ Class: Base Model """
 from datetime import datetime
 from datetime import timedelta
-from models.__init__ import storage
+from . import storage
 import uuid
 
 
