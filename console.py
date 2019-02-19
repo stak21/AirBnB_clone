@@ -8,7 +8,15 @@ from models.__init__ import storage
 class HBNBCommand(cmd.Cmd):
     """this class is the beginning of the interpreter"""
     prompt = "(hbnb) "
-    list_classes = ["BaseModel", "User"]
+    list_classes = [
+                "BaseModel",
+                "User",
+                "Place",
+                "State",
+                "City",
+                "Amenity",
+                "Review"
+                ]
 # adding the classes to this list so the methods check throgh here if class
 # exists.
 
