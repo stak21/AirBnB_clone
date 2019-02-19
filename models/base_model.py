@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """ Class: Base Model """
-""" Class: Base Model """
-from datetime import datetime
-from datetime import timedelta
-from . import storage
 import uuid
+from datetime import datetime
+from . import storage
 
 
 class BaseModel():
