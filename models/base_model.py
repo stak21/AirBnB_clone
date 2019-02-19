@@ -29,9 +29,8 @@ class BaseModel():
 
     def to_dict(self):
         """returns a dictionary containing all keys/values"""
-        return {
-                "id": self.id,
-                "__class__": self.__class__.__name__,
-                "updated_at": self.updated_at.isoformat(),
-                "created_at": self.created_at.isoformat()
-                }
+        self.dic = {key: val for key, val in self.__dict__.items()}
+        self.dic['updated_at'] = str(self.dic['updated_at'])
+        self.dic['created_at'] = str(self.dic['created_at'])
+        self.dic['__class__'] = self.__class__.__name__
+        return self.dic
