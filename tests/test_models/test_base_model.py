@@ -5,7 +5,6 @@ from datetime import datetime
 from models.base_model import BaseModel
 
 
-
 class TestBaseModel(unittest.TestCase):
     """ Test cases for the BaseModel """
     def setUp(self):
