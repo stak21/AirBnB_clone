@@ -5,4 +5,4 @@ from models.base_model import BaseModel
 
 class State(BaseModel):
     """making a State class from BaseModel"""
-    self.name = ""
+    name = ""
