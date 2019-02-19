@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 import cmd
 from models.base_model import BaseModel
+from models.user    import User
 from models.__init__ import storage
 
 
 class HBNBCommand(cmd.Cmd):
     """this class is the beginning of the interpreter"""
     prompt = "(hbnb) "
-    list_classes = ["BaseModel"]
+    list_classes = ["BaseModel", "User"]
 # adding the classes to this list so the methods check throgh here if class
 # exists.
 
@@ -35,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
         if args[0] not in self.list_classes:
             print("** class doesn't exist **")
             return
-        newinstance = BaseModel()
+        newinstance = eval("{}()".format(args[0]))
         newinstance.save()
         print(newinstance.id)
 
@@ -54,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
         
         storage.reload()
         dict_objs = storage.all()
-        if dict_objs is None:
+        if dict_objs is None or dict_objs == []:
             print("** no instance found **")
             return
 
@@ -80,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
         
         storage.reload()
         dict_objs = storage.all()
-        if dict_objs is None:
+        if dict_objs is None or dict_objs == []:
             print("** no instance found **")
             return
 
@@ -96,9 +97,13 @@ class HBNBCommand(cmd.Cmd):
         """prints all string representation of all instances based or not on the
         class name"""
         args = [ele for ele in args[0].split(' ')]
+        print_obj = []
         if args[0] == '':
-            print([dic for dic in storage.all()])
-            eval("{}(**{})".format(args[1], args[2]))
+            for obj, val in storage.all().items():
+                key = obj.split('.')
+                obj_rep = eval("{}(**{})".format(key[0],val))
+                print_obj.append(obj_rep.__str__())
+            print(print_obj)
             return
         if args[0] not in self.list_classes:
             print("** class doesn't exist **")
@@ -126,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
         
         storage.reload()
         dict_objs = storage.all()
-        if dict_objs is None:
+        if dict_objs is None or dict_objs == []:
             print("** no instance found **")
             return
 
