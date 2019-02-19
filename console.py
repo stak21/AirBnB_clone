@@ -11,8 +11,8 @@ class HBNBCommand(cmd.Cmd):
 # adding the classes to this list so the methods check throgh here if class
 # exists.
 
-    def do_quit():
-        """Quit command to exit the program"""
+    def do_quit(self, arg):
+        """Quit command to exit the program\n"""
         return True
 
     def do_EOF():
