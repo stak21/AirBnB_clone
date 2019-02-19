@@ -108,6 +108,14 @@ class HBNBCommand(cmd.Cmd):
         if args[0] not in self.list_classes:
             print("** class doesn't exist **")
             return
+        else:
+            ''' Get a list of specified instances '''
+            for obj, val in storage.all().items():
+                key = obj.split('.')
+                if key[0] == args[0]:
+                    obj_rep = eval("{}(**{})".format(key[0],val))
+                    print_obj.append(obj_rep.__str__())
+            print(print_obj)
 
 
     def do_update(self, *args):
