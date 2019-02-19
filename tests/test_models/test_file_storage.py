@@ -35,8 +35,8 @@ class TestStorage(unittest.TestCase):
         self.storage.new(base)
         self.storage.save()
         with open("file.json", 'r', encoding="utf-8") as f:
-            self.r = f.read()
-            self.assertEqual(len(self.r), 212)
+            self.r = json.load(f)
+            self.assertEqual(len(self.r), 1)
 
     """ new: stores inside of __object a dictionary rep of the given object """
     def test_new(self):
