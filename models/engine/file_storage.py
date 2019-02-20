@@ -17,12 +17,13 @@ class FileStorage():
         """set __objects the obj with key <obj class name>.id
         & adds the new dictionary to __objects"""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = obj.to_dict()
+        self.__objects[key] = obj
 
     def save(self):
         """serializes __objects to the JSON file (__file_path)"""
+        obj_dict = {key: obj.to_dict() for key, obj in self.all().items()}
         with open(self.__file_path, 'w', encoding="utf-8") as f:
-            json.dump(self.__objects, f)
+            json.dump(obj_dict, f)
 
     def reload(self):
         """if file exists, public instance method deserializes the JSON file
@@ -30,8 +31,13 @@ class FileStorage():
         try:
             with open(self.__file_path) as f:
                 self.__objects = json.load(f)
+                for key, value in self.__objects.items():
+                    class_key = key.split(".")
+                    self.__objects[key] = eval("{}()".format(class_key[0]))
         except:
             pass
+
+
 
     @classmethod
     def _refresh(cls):
