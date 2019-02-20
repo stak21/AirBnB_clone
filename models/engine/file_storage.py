@@ -44,7 +44,7 @@ class FileStorage():
                     class_key = key.split(".")
                     self.__objects[key] = eval(
                         "{}(**{})".format(class_key[0], value))
-        except Exception as e:
+        except:
             pass
 
     @classmethod
