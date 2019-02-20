@@ -5,6 +5,7 @@ from datetime import datetime
 from models.base_model import BaseModel
 
 
+
 class TestBaseModel(unittest.TestCase):
     """ Test cases for the BaseModel """
     def setUp(self):
@@ -42,6 +43,13 @@ class TestBaseModel(unittest.TestCase):
         shoji = "[BaseModel] ({}) {}".format(self.base.id, self.base.__dict__)
         self.assertEqual(self.base.__str__(), shoji)
 
+    @unittest.expectedFailure
+    def test_save(self):
+        """ Test save """
+        updated_at_time = self.base.updated_at
+        self.base.save()
+        self.assertEqual(created_time, self.base.updated_at)
+
     def test_to_dict_return(self):
         """ Test to_dict: return value"""
         test_dict = self.base.to_dict()
@@ -50,7 +58,7 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict_dunder(self):
         """ Test the return dunder of __dict__ """
         dunder = self.base.__dict__
-        for attr in dunder:
+        for attr in dunder.keys():
             self.assertNotIn('__', attr)
 
     def test_to_dict_class(self):
