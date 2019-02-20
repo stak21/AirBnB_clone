@@ -1,7 +1,7 @@
 
 #0x00. AirBnB clone - The console
 ---
-##This project will cover:
+## This project will cover:
 *How to create a Python package to do an AirBnB clone.
 *How to create a command interpreter in Python using the cmd module
 *What is Unit testing and how to implement it in a large project
@@ -22,10 +22,10 @@ The prompt will appear each time a command has been executed.
 If an executable cannot be found it will print an error. 
 Handles EOF, quit as well as other built-in commands: 
 
-##How to start our console
+## How to start our console
 ./console.py
 
-##List of built in commands
+## List of built in commands
 *create - creates a new instance of a class.
 *show - prints the string representation of an instance based in the class name
 and id.
@@ -34,7 +34,7 @@ and id.
 *update - updates an instance based on the class name and id by adding or
 updating an attribute.
 
-##Examples
+## Examples
 To create a new instance of BaseModel:
 (hbnb) create BaseModel
 49faff9a-6318-451f-87b6-910505c55907
@@ -42,8 +42,10 @@ To create a new instance of BaseModel:
 ** class doesn't exist **
 (hbnb) all BaseModel
 ["[BaseModel] (2dd6ef5c-467c-4f82-9521-a772ea7d84e9) {'id': '2dd6ef5c-467c-4f82-9521-a772ea7d84e9', 'created_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639717), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639724)}", "[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'first_name': 'Betty', 'id': '49faff9a-6318-451f-87b6-910505c55907', 'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 3, 49401)}"]
-(hbnb) destroy BaseModel 49faff9a-6318-451f-87b6-910505c55907
-(hbnb) show BaseModel 49faff9a-6318-451f-87b6-910505c55907
+(hbnb) destroy BaseModel 
+49faff9a-6318-451f-87b6-910505c55907
+(hbnb) show BaseModel 
+49faff9a-6318-451f-87b6-910505c55907
 ** no instance found **
 
 
