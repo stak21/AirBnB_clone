@@ -73,8 +73,3 @@ class TestFileStorage(unittest.TestCase):
             os.remove('file.json')
         self.storage.reload()
         self.assertFalse(os.path.isfile('file.json'))
-
-    def test_file_attributes(self):
-        """ Test the file path """
-        self.assertEqual(FileStorage.__file_path, "file.json")
-        self.assertEqual(FileStorage.__objects, {})
