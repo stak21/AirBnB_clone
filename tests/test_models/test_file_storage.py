@@ -21,6 +21,10 @@ class TestStorage(unittest.TestCase):
         self.storage._refresh()
         self.storage.reload()
 
+    def test_all(self):
+        """ Tests if all returns a dictionary """
+        self.assertEqual(type(self.storage.all()), dict)
+
     """ Save: Saves the dictionary stored in __object to a file """
     def test_save_empty(self):
         """ Tests if save wrote to the file an empty dictionary """
@@ -32,18 +36,21 @@ class TestStorage(unittest.TestCase):
     def test_save_object(self):
         """ Tests if save wrote an object to the file """
         base = BaseModel()
+        base.id = '121212'
         self.storage.new(base)
         self.storage.save()
         with open("file.json", 'r', encoding="utf-8") as f:
             self.r = json.load(f)
-            self.assertEqual(len(self.r), 1)
+            self.assertEqual(self.r, self.storage.all())
 
     """ new: stores inside of __object a dictionary rep of the given object """
     def test_new(self):
         """ tests if storage was incremented by one object """
         self.base = BaseModel()
+        self.base.id = '121212'
         self.storage.new(self.base)
-        self.assertEqual(len(self.storage.all()), 1)
+        test_dic = self.storage.all()
+        self.assertTrue(test_dic['BaseModel.121212'])
 
     @unittest.expectedFailure
     def test_new_if_classes_of_basemodel(self):
