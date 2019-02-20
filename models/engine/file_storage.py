@@ -42,8 +42,8 @@ class FileStorage():
                 objs_dict = json.load(f)
                 for key, value in objs_dict.items():
                     class_key = key.split(".")
-                    self.__objects[key] = eval("{}(**{})".format(class_key[0],
-                    value))
+                    self.__objects[key] = eval(
+                        "{}(**{})".format(class_key[0], value))
         except Exception as e:
             pass
 

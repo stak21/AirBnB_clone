@@ -33,5 +33,4 @@ class BaseModel():
         dic['updated_at'] = str(dic['updated_at'])
         dic['created_at'] = str(dic['created_at'])
         dic['__class__'] = self.__class__.__name__
-        
         return dic

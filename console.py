@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import cmd
 from models.base_model import BaseModel
-from models.user    import User
+from models.user import User
 from models.place import Place
 from models.state import State
 from models.city import City
@@ -105,7 +105,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** no instance found **")
 
-
     def do_all(self, *args):
         """prints all string representation of all instances based or not on the
         class name"""
@@ -128,8 +127,6 @@ class HBNBCommand(cmd.Cmd):
                 if key[0] == args[0]:
                     print_obj.append(obj.__str__())
             print(print_obj)
-
-
 
     def do_update(self, *args):
         """update/adds attributes in an instance based on class and id."""
