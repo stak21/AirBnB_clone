@@ -7,7 +7,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
-from models.__init__ import storage
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -111,11 +111,10 @@ class HBNBCommand(cmd.Cmd):
         class name"""
         args = [ele for ele in args[0].split(' ')]
         print_obj = []
+        storage.reload()
         if args[0] == '':
-            for obj, val in storage.all().items():
-                key = obj.split('.')
-                obj_rep = eval("{}(**{})".format(key[0],val))
-                print_obj.append(obj_rep.__str__())
+            for key, obj in storage.all().items():
+                print_obj.append(obj.__str__())
             print(print_obj)
             return
         if args[0] not in self.list_classes:
@@ -123,12 +122,13 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             ''' Get a list of specified instances '''
-            for obj, val in storage.all().items():
-                key = obj.split('.')
+            print(storage.all().items())
+            for key, obj in storage.all().items():
+                key = key.split('.')
                 if key[0] == args[0]:
-                    obj_rep = eval("{}(**{})".format(key[0],val))
-                    print_obj.append(obj_rep.__str__())
+                    print_obj.append(obj.__str__())
             print(print_obj)
+
 
 
     def do_update(self, *args):
