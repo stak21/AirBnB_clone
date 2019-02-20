@@ -3,11 +3,11 @@
 UnitTest for filestorage: This class manages objects in storage letting you
 save, reload, and create
 """
-from models.engine.file_storage import FileStorage
-from models.base_model import BaseModel
 import unittest
 import os
 import json
+from models.engine.file_storage import FileStorage
+from models.base_model import BaseModel
 
 
 class TestStorage(unittest.TestCase):
@@ -30,10 +30,13 @@ class TestStorage(unittest.TestCase):
         new_model = BaseModel(**test_dict)
         self.assertEqual(new_model.id, my_model.id)
 
-
     def test_all(self):
         """ Tests if all returns a dictionary """
         self.assertEqual(type(self.storage.all()), dict)
+
+    def test_all_value(self):
+        """ Tests the return value of al() """
+        self.assertEqual(self.storage.all(), {})
 
     """ Save: Saves the dictionary stored in __object to a file """
     def test_save_empty(self):
@@ -65,7 +68,7 @@ class TestStorage(unittest.TestCase):
     @unittest.expectedFailure
     def test_new_if_classes_of_basemodel(self):
         """ Tests new by providing a bad object """
-        self.self.storage.new([])
+        self.storage.new([])
 
     """ reload: returns a dictionary stored inside of a file """
     def test_reload(self):

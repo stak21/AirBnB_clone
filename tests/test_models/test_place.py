@@ -3,6 +3,7 @@
 import unittest
 from models.place import Place
 
+
 class TestPlace(unittest.TestCase):
     """class to test Place."""
     def setUp(self):
