@@ -45,9 +45,8 @@ class TestBaseModel(unittest.TestCase):
     @unittest.expectedFailure
     def test_save(self):
         """ Test save """
-        updated_at_time = self.base.updated_at
         self.base.save()
-        self.assertEqual(created_time, self.base.updated_at)
+        self.assertEqual(self.base.created_at, self.base.updated_at)
 
     def test_to_dict_return(self):
         """ Test to_dict: return value"""
