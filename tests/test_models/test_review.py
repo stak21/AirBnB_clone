@@ -4,8 +4,8 @@ import unittest
 from models.review import Review
 
 
-class TestPlace(unittest.TestCase):
-    """class to test Place."""
+class TestReview(unittest.TestCase):
+    """class to test review."""
 
     def setUp(self):
         """ Sets up User for every test """
@@ -17,4 +17,4 @@ class TestPlace(unittest.TestCase):
 
     def test_empty_string(self):
         """testing string for empty string"""
-        self.assertEqual(self.place.city_id, "")
+        self.assertEqual(self.review.user_id, "")
