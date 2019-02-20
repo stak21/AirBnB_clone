@@ -2,7 +2,7 @@
 import unittest
 from models.state import State
 
-class TestUser(unittest.TestCase):
+class TestState(unittest.TestCase):
     """Class to test State"""
     def test_string(self):
         """test if state name is an empty string."""

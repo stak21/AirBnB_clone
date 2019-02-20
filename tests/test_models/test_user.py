@@ -24,14 +24,3 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.user.password, "")
         self.assertEqual(self.user.first_name, "")
         self.assertEqual(self.user.last_name, "")
-
-    def test_user_testing_wrong_type(self):
-        """ Test if a modified variable's value is a string """
-        with self.assertRaises(TypeError):
-            self.user.email = 1
-        with self.assertRaises(TypeError):
-            self.user.password = 1
-        with self.assertRaises(TypeError):
-            self.user.first_name = 1
-        with self.assertRaises(TypeError):
-            self.user.last_name = 1
