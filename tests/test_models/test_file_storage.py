@@ -46,16 +46,6 @@ class TestStorage(unittest.TestCase):
             self.r = f.read()
             self.assertEqual(self.r, "{}")
 
-    def test_save_object(self):
-        """ Tests if save wrote an object to the file """
-        base = BaseModel()
-        base.id = '121212'
-        self.storage.new(base)
-        self.storage.save()
-        with open("file.json", 'r', encoding="utf-8") as f:
-            self.r = json.load(f)
-            self.assertEqual(self.r, self.storage.all())
-
     """ new: stores inside of __object a dictionary rep of the given object """
     def test_new(self):
         """ tests if storage was incremented by one object """
