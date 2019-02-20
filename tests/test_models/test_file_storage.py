@@ -21,6 +21,16 @@ class TestStorage(unittest.TestCase):
         self.storage._refresh()
         self.storage.reload()
 
+    def test_theirs(self):
+        """ Test their testcase """
+        my_model = BaseModel()
+        my_model.name = "Holberton"
+        my_model.my_number = 89
+        test_dict = my_model.to_dict()
+        new_model = BaseModel(**test_dict)
+        self.assertEqual(new_model.id, my_model.id)
+
+
     def test_all(self):
         """ Tests if all returns a dictionary """
         self.assertEqual(type(self.storage.all()), dict)
