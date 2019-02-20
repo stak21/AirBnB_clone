@@ -10,7 +10,7 @@ from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
 
-class TestStorage(unittest.TestCase):
+class TestFileStorage(unittest.TestCase):
     """ Tests the file storage """
     def setUp(self):
         """
