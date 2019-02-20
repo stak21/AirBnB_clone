@@ -58,9 +58,7 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict_dunder(self):
         """ Test the return dunder of __dict__ """
         dunder = self.base.__dict__
-        print(dunder)
         for attr in dunder.keys():
-            print(attr)
             self.assertNotIn('__', attr)
 
     def test_to_dict_class(self):

@@ -38,10 +38,10 @@ class TestUser(unittest.TestCase):
 
     def test_user_update(self):
         """ Test values when user attributes are updated """
-        user.first_name = "Angie"
-        user.last_name = "Delgado"
-        user.email = "angie@holby.com"
-        user.password = "root"
-        user.save()
+        self.user.first_name = "Angie"
+        self.user.last_name = "Delgado"
+        self.user.email = "angie@holby.com"
+        self.user.password = "root"
+        self.user.save()
 
 
