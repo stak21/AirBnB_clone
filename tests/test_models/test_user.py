@@ -35,13 +35,3 @@ class TestUser(unittest.TestCase):
             self.user.first_name = 1
         with self.assertRaises(TypeError):
             self.user.last_name = 1
-
-    def test_user_update(self):
-        """ Test values when user attributes are updated """
-        self.user.first_name = "Angie"
-        self.user.last_name = "Delgado"
-        self.user.email = "angie@holby.com"
-        self.user.password = "root"
-        self.user.save()
-
-
