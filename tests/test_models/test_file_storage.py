@@ -50,10 +50,9 @@ class TestStorage(unittest.TestCase):
         """ Tests new by providing a bad object """
         self.self.storage.new([])
 
-
     """ reload: returns a dictionary stored inside of a file """
     def test_reload(self):
-        """ tests if reload properly loads the dictionary object with 2 items"""
+        """ test if reload properly loads the dictionary object with 2 items"""
         self.test_dictionary = {"BaseModel.121212": {"id": 121212}}
         self.test_dictionary["BaseModel.221212"] = {"id": 121212}
         with open("file.json", 'w+') as f:

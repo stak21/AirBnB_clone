@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Class: FileStorage """
 import json
 
 
@@ -30,7 +31,7 @@ class FileStorage():
             with open(FileStorage.__file_path) as f:
                 FileStorage.__objects = json.load(f)
         except:
-             pass
+            pass
 
     @classmethod
     def _refresh(cls):
