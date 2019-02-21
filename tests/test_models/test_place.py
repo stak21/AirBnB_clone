@@ -10,7 +10,7 @@ class TestPlace(unittest.TestCase):
         """ Sets up User for every test """
         self.place = Place()
 
-    def test_place_name_string(self):
+    def test_place_for_type(self):
         """testing if place name is a string"""
         self.assertEqual(type(self.place.city_id), str)
         self.assertEqual(type(self.place.user_id), str)
@@ -45,5 +45,6 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(self.place.longitude, zero)
 
     def test_for_empty_list(self):
+        """testing for an empty list"""
         emptylist = []
         self.assertEqual(self.place.amenity_ids, emptylist)

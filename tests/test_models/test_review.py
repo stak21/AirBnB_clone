@@ -14,7 +14,11 @@ class TestReview(unittest.TestCase):
     def test_if_str(self):
         """test if type is str"""
         self.assertEqual(type(self.review.place_id), str)
+        self.assertEqual(type(self.review.user_id), str)
+        self.assertEqual(type(self.review.text), str)
 
     def test_empty_string(self):
         """testing string for empty string"""
         self.assertEqual(self.review.user_id, "")
+        self.assertEqual(self.review.place_id, "")
+        self.assertEqual(self.review.text, "")
