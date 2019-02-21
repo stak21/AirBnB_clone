@@ -81,12 +81,13 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(type(test_dict['created_at']), str)
 
     def test_save(self):
-        """Test save"""
+        """Test save, if date is datetime object"""
         self.save_test = BaseModel()
         before = self.save_test.updated_at
         self.save_test.save()
         after = self.save_test.updated_at
         self.assertTrue(type(after) is datetime)
+        """Test save if strings are the same"""
         before = str(before)
         after = str(after)
         self.assertFalse(after == before)
