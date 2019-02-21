@@ -79,3 +79,14 @@ class TestBaseModel(unittest.TestCase):
         """ Test if created_at is a string inside of the dictionary """
         test_dict = self.base.to_dict()
         self.assertEqual(type(test_dict['created_at']), str)
+
+    def test_save(self):
+        """Test save"""
+        self.save_test = BaseModel()
+        before = self.save_test.updated_at
+        self.save_test.save()
+        after = self.save_test.updated_at
+        self.assertTrue(type(after) is datetime)
+        before = str(before)
+        after = str(after)
+        self.assertFalse(after == before)
