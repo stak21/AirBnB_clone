@@ -5,4 +5,6 @@ from models.base_model import BaseModel
 
 class Amenity(BaseModel):
     """making an Amenity class from BaseModel"""
-    name = ""
+    place_id = ""
+    user_id = ""
+    text = ""
