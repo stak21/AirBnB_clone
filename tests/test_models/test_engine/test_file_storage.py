@@ -73,3 +73,11 @@ class TestFileStorage(unittest.TestCase):
             os.remove('file.json')
         self.storage.reload()
         self.assertFalse(os.path.isfile('file.json'))
+
+    def test_private(self):
+        """ Test that private variables exist """
+        with self.assertRaises(AttributeError):
+            FileStorage.__objects
+        with self.assertRaises(AttributeError):
+            FileStorage.__file_path
+
