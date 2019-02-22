@@ -41,6 +41,8 @@ class HBNBCommand(cmd.Cmd):
             cmd = all_group.pop(0)
             cls = all_group.pop(0)
             uid = all_group.pop(0)
+        else:
+            return line
         if '.' in line:
             cmd, cls = cls, cmd
         if '{' in line or cmd == "update":
@@ -55,15 +57,17 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program\n"""
         return True
 
-    def do_EOF(self, *args):
+    def do_EOF(self, args):
         """End of File to exit file."""
         print()
 
-    def do_emptyline(self, arg):
+    def emptyline(self):
         """method so it should not execute anything"""
+        print('empty')
         pass
 
     def do_count(self, *args):
+        """ counts the number of instances of a given class """
         count = 0
         args = [ele for ele in args[0].split(' ')]
         if args[0] == '':
