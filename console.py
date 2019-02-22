@@ -63,7 +63,6 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """method so it should not execute anything"""
-        print('empty')
         pass
 
     def do_count(self, *args):
