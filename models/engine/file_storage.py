@@ -42,6 +42,13 @@ class FileStorage():
                 objs_dict = json.load(f)
                 for key, value in objs_dict.items():
                     class_key = key.split(".")
+                    try:
+                        value['updated_at'] =\
+                            datetime.strptime(value['updated_at'])
+                        value['created_at'] =\
+                            datetime.strptime(value['created_at'])
+                    except:
+                        pass
                     self.__objects[key] = eval(
                         "{}(**{})".format(class_key[0], value))
         except:
