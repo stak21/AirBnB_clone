@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
         for match in matches:
             all_group.append(match.group())
         if len(all_group) == 1:
-            cmd = all_group
+            return line
         elif len(all_group) == 2:  # assigns only if correct number of args
             cmd = all_group.pop(0)
             cls = all_group.pop(0)
@@ -45,10 +45,18 @@ class HBNBCommand(cmd.Cmd):
             return line
         if '.' in line:
             cmd, cls = cls, cmd
-        if '{' in line or cmd == "update":
-            for key, value in zip(all_group[0::2], all_group[1::2]):
-                self.do_update(cls, uid, key, value)
-            return ''
+        line = "{} {}".format(cmd, cls)
+        if cmd == "update":
+            if len(all_group) > 1:
+                for key, value in zip(all_group[0::2], all_group[1::2]):
+                    self.do_update(cls, uid, key, value)
+                return ""
+            else:
+                if uid:
+                    line += " " + uid
+                if all_group:
+                    line += " " + all_group[0]
+                return line
         if cls in self.list_classes:
             line = "{} {} {}".format(cmd, cls, uid)
         return line
@@ -175,6 +183,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, *args):
         """update/adds attributes in an instance based on class and id."""
+        if len(args) == 1:
+            args = [ele for ele in args[0].split(' ')]
         if args[0] == '':
             print("** class name missing **")
             return
@@ -189,6 +199,7 @@ class HBNBCommand(cmd.Cmd):
             return
         elif len(args) < 4:
             print("** value missing **")
+            return
 
         storage.reload()
         dict_objs = storage.all()
