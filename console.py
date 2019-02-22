@@ -59,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, args):
         """End of File to exit file."""
-        print()
+        return True
 
     def emptyline(self):
         """method so it should not execute anything"""
