@@ -48,7 +48,7 @@ class HBNBCommand(cmd.Cmd):
         if '{' in line or cmd == "update":
             for key, value in zip(all_group[0::2], all_group[1::2]):
                 self.do_update(cls, uid, key, value)
-            return 'emptyline'
+            return ''
         if cls in self.list_classes:
             line = "{} {} {}".format(cmd, cls, uid)
         return line
@@ -175,7 +175,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, *args):
         """update/adds attributes in an instance based on class and id."""
-        print(args)
         if args[0] == '':
             print("** class name missing **")
             return
@@ -200,14 +199,10 @@ class HBNBCommand(cmd.Cmd):
         key = "{}.{}".format(args[0], args[1])
         if key in dict_objs.keys():
             obj = dict_objs[key]
-            print(args[2])
-            print(obj.__dict__)
             if args[2] in obj.__class__.__dict__:
-                print('exists key')
                 obj.__dict__[args[2]] =\
                     type(obj.__class__.__dict__[args[2]])(args[3])
             else:
-                print('no exists key')
                 obj.__dict__[args[2]] = args[3]
             storage.save()
         else:
