@@ -80,4 +80,3 @@ class TestFileStorage(unittest.TestCase):
             FileStorage.__objects
         with self.assertRaises(AttributeError):
             FileStorage.__file_path
-
