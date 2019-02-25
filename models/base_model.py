@@ -11,6 +11,13 @@ class BaseModel():
         """ Instantiates the base model variables """
         if kwargs:
             self.__dict__ = kwargs
+            try:
+                self.__dict__['updated_at'] = datetime.strptime(self.__dict__[
+                    'updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                self.__dict__['created_at'] = datetime.strptime(self.__dict__[
+                    'created_at'], "%Y-%m-%dT%H:%M:%S.%f")
+            except Exception as e:
+                pass
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
