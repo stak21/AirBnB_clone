@@ -31,7 +31,7 @@ class TestFileStorage(unittest.TestCase):
     def test_all(self):
         """ Tests if all returns a dictionary """
         dic = self.storage.all()
-        self.assertEqual(type(dic),dict)
+        self.assertEqual(type(dic), dict)
 
     def test_all_value(self):
         """ Tests the return value of al() """
