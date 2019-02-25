@@ -41,17 +41,10 @@ class FileStorage():
         try:
             with open(self.__file_path) as f:
                 objs_dict = json.load(f)
-                for key, value in objs_dict.items():
-                    class_key = key.split(".")
-                    try:
-                        value['updated_at'] = datetime.strptime(value[
-                            'updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
-                        value['created_at'] = datetime.strptime(value[
-                            'created_at'], "%Y-%m-%dT%H:%M:%S.%f")
-                    except Exception as e:
-                        pass
-                    self.__objects[key] = eval(
-                        "{}(**{})".format(class_key[0], value))
+            for key, value in objs_dict.items():
+                class_key = key.split(".")
+                self.__objects[key] = eval(
+                    "{}(**{})".format(class_key[0], value))
         except:
             pass
 
