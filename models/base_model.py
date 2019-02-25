@@ -31,7 +31,7 @@ class BaseModel():
     def to_dict(self):
         """returns a dictionary containing all keys/values"""
         dic = {key: val for key, val in self.__dict__.items()}
-        dic['updated_at'] = str(dic['updated_at'])
-        dic['created_at'] = str(dic['created_at'])
+        dic['updated_at'] = dic['updated_at'].isoformat()
+        dic['created_at'] = dic['created_at'].isoformat()
         dic['__class__'] = self.__class__.__name__
         return dic
