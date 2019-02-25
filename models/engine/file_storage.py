@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Class: FileStorage """
 import json
+from datetime import datetime
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -43,11 +44,11 @@ class FileStorage():
                 for key, value in objs_dict.items():
                     class_key = key.split(".")
                     try:
-                        value['updated_at'] =\
-                            datetime.strptime(value['updated_at'])
-                        value['created_at'] =\
-                            datetime.strptime(value['created_at'])
-                    except:
+                        value['updated_at'] = datetime.strptime(value[
+                            'updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                        value['created_at'] = datetime.strptime(value[
+                            'created_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                    except Exception as e:
                         pass
                     self.__objects[key] = eval(
                         "{}(**{})".format(class_key[0], value))
