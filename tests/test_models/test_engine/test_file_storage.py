@@ -45,6 +45,13 @@ class TestFileStorage(unittest.TestCase):
             self.r = f.read()
             self.assertEqual(self.r, "{}")
 
+    def test_save(self):
+        base = BaseModel()
+        pre_obj = self.storage.all()
+        self.storage.save()
+        after_obj = self.storage.all()
+        self.assertEqual(pre_obj, after_obj)
+
     """ new: stores inside of __object a dictionary rep of the given object """
     def test_new(self):
         """ tests if storage was incremented by one object """
@@ -76,9 +83,12 @@ class TestFileStorage(unittest.TestCase):
         self.storage.reload()
         self.assertFalse(os.path.isfile('file.json'))
 
-    def test_private(self):
+    def test_private_file(self):
+        """ Test that private variables exist """
+        with self.assertRaises(AttributeError):
+            FileStorage.__file_path
+
+    def test_private_object(self):
         """ Test that private variables exist """
         with self.assertRaises(AttributeError):
             FileStorage.__objects
-        with self.assertRaises(AttributeError):
-            FileStorage.__file_path
