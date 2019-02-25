@@ -5,6 +5,7 @@ import os
 import json
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from models.user import User
 
 
 class TestFileStorage(unittest.TestCase):
@@ -81,3 +82,4 @@ class TestFileStorage(unittest.TestCase):
             FileStorage.__objects
         with self.assertRaises(AttributeError):
             FileStorage.__file_path
+
