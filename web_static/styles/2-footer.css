@@ -6,4 +6,5 @@ footer {
     bottom: 0;
     position: absolute;
     display: flex;
+    align-items: center;
 }
