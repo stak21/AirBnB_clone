@@ -5,4 +5,5 @@ header {
     border-bottom: 1px #CCCCCC;
     align-item: left;
     justify-content: center;
+    background-image: url(logo.png);
 }
