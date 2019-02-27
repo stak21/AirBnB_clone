@@ -42,12 +42,6 @@ class TestBaseModel(unittest.TestCase):
         shoji = "[BaseModel] ({}) {}".format(self.base.id, self.base.__dict__)
         self.assertEqual(self.base.__str__(), shoji)
 
-    @unittest.expectedFailure
-    def test_save(self):
-        """ Test save """
-        self.base.save()
-        self.assertEqual(self.base.created_at, self.base.updated_at)
-
     def test_to_dict_return(self):
         """ Test to_dict: return value"""
         test_dict = self.base.to_dict()

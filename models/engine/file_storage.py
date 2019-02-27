@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Class: FileStorage """
 import json
+from datetime import datetime
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -40,10 +41,10 @@ class FileStorage():
         try:
             with open(self.__file_path) as f:
                 objs_dict = json.load(f)
-                for key, value in objs_dict.items():
-                    class_key = key.split(".")
-                    self.__objects[key] = eval(
-                        "{}(**{})".format(class_key[0], value))
+            for key, value in objs_dict.items():
+                class_key = key.split(".")
+                self.__objects[key] = eval(
+                    "{}(**{})".format(class_key[0], value))
         except:
             pass
 

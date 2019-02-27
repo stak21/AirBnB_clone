@@ -5,6 +5,7 @@ import os
 import json
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from models.user import User
 
 
 class TestFileStorage(unittest.TestCase):
@@ -29,7 +30,8 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ Tests if all returns a dictionary """
-        self.assertEqual(type(self.storage.all()), dict)
+        dic = self.storage.all()
+        self.assertEqual(type(dic), dict)
 
     def test_all_value(self):
         """ Tests the return value of al() """
@@ -42,6 +44,13 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", 'r', encoding="utf-8") as f:
             self.r = f.read()
             self.assertEqual(self.r, "{}")
+
+    def test_save(self):
+        base = BaseModel()
+        pre_obj = self.storage.all()
+        self.storage.save()
+        after_obj = self.storage.all()
+        self.assertEqual(pre_obj, after_obj)
 
     """ new: stores inside of __object a dictionary rep of the given object """
     def test_new(self):
@@ -73,3 +82,13 @@ class TestFileStorage(unittest.TestCase):
             os.remove('file.json')
         self.storage.reload()
         self.assertFalse(os.path.isfile('file.json'))
+
+    def test_private_file(self):
+        """ Test that private variables exist """
+        with self.assertRaises(AttributeError):
+            FileStorage.__file_path
+
+    def test_private_object(self):
+        """ Test that private variables exist """
+        with self.assertRaises(AttributeError):
+            FileStorage.__objects

@@ -19,7 +19,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(type(self.place.number_rooms), int)
         self.assertEqual(type(self.place.number_bathrooms), int)
         self.assertEqual(type(self.place.max_guest), int)
-        self.assertEqual(type(self.place.price_by_night), float)
+        self.assertEqual(type(self.place.price_by_night), int)
         self.assertEqual(type(self.place.latitude), float)
         self.assertEqual(type(self.place.longitude), float)
         self.assertEqual(type(self.place.amenity_ids), list)
