@@ -1,9 +1,8 @@
 header {
+    border-bottom: solid 1px #CCCCCC;
+    background-image: url('../images/logo.png');
     color: FFFFFF;
     height: 70px;
     width: 100%;
-    border-bottom: 1px #CCCCCC;
     align-item: left;
-    justify-content: center;
-    background-image: url(logo.png);
 }
