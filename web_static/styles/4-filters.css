@@ -1,0 +1,19 @@
+.filters {
+  color: #FFFFFF;
+  height: 70px;
+  width: 100%
+  border: 1px #DDDDDD;
+  border-radius: 4px;
+}
+.button {
+  background-color: #FF5A5F
+  text-color: #FFFFFF;
+  height: 48px;
+  width: 20%
+  border-radius: 4px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 30px;
+  opacity: 90%;
+  filter: alpha(opacity = 90%);
+}
