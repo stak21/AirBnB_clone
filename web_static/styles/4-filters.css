@@ -1,24 +1,7 @@
-button {
-  font-size: 18;
-  background-color: #FF5A5F;
-  color: #FFFFFF;
-  height: 48px;
-  width: 20%;
-  border-radius: 4px;
-  margin-top: 11px;
-  margin-bottom: 11px;
-  float: right;
-  margin-right: 30px;
-  border: none;
-  opacity: 90%;
-}
-button:hover {
-  opacity: 0.9;
-}
-.filters {
-color: #FFFFFF;
-height: 70px;
-width: 100%;
-border: solid 1px #DDDDDD;
-border-radius: 4px;
+.filters{
+	color: white;
+	height: 70px;
+	width: 100%;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
 }
