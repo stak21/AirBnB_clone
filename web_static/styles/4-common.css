@@ -42,12 +42,10 @@ p {
 	width: 20%;
 	margin-right: 30px;
 	border: none;
-}
-.button_text{
 	font-size: 18px;
 	color: #FFFFFF;
-	margin: 0;
 }
+
 .button_container:hover {
 	opacity: 0.9;
 	filter: alpha(opacity=90);
